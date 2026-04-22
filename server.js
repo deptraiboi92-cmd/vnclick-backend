@@ -15,6 +15,10 @@ app.get("/", (req,res)=>{
   res.send("Vnclick server running");
 });
 
+app.get("/api/test", (req, res) => {
+  res.json({ message: "API working" });
+});
+
 app.listen(process.env.PORT || 3000, ()=>{
   console.log("Server running");
 });
