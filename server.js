@@ -1,4 +1,5 @@
 require("dotenv").config();
+const User = require("./models/User");
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -18,7 +19,14 @@ app.get("/", (req,res)=>{
 app.get("/api/test", (req, res) => {
   res.json({ message: "API working" });
 });
-
+app.get("/api/create-user", async (req, res) => {
+    const newUser = new User({
+        name: "Dep Trai",
+        age: 18
+    });
+    await newUser.save();
+    res.send("User created!");
+});
 app.listen(process.env.PORT || 3000, ()=>{
   console.log("Server running");
 });
